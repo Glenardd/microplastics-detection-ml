@@ -1,0 +1,23 @@
+# Ignore virtual environment folders
+venv/
+env/
+.env/
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+
+# Ignore large datasets or outputs
+data/
+outputs/
+models/
+
+# VS Code settings
+.vscode/
