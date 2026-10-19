@@ -4,6 +4,18 @@
 
 This project uses **CSRNet**, a deep learning model that takes a microscope image and estimates how many microplastic particles are in it. It does this by producing a "density map" (a heatmap of where particles are), then adding it up to get a count.
 
+## Dataset
+
+The images were split into three sets:
+
+| Set        | Images | Purpose |
+|------------|--------|---------|
+| Training   | 335    | The model learns from these |
+| Validation | 130    | Checked after each epoch to track progress on unseen data |
+| Test       | 35     | Used only once at the end for the final score |
+
+**Total: 500 images** (about 67% training, 26% validation, 7% test)
+
 ## Example detection using the trained model
 ### Example microplastic sample
 ![microplastic sample](prediction_results_example/example_microplastic_sample.png)
