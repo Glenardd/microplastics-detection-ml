@@ -1,3 +1,38 @@
+# Model Training
+
+## About the model
+
+This project uses **CSRNet**, a deep learning model that takes a microscope image and estimates how many microplastic particles are in it. It does this by producing a "density map" (a heatmap of where particles are), then adding it up to get a count.
+
+![Training curves](training-result/training_curve.png)
+
+### What these charts show
+
+I trained the model for 30 rounds (called epochs). After each round, I checked how well it was doing.
+
+- **Loss** (left chart): how wrong the model is. Lower is better.
+- **MAE** (right chart): the average size of the model's mistakes. Lower is better.
+- **Blue line**: how the model does on data it learned from.
+- **Red line**: how the model does on new data it has never seen.
+
+### Results
+
+| Metric | Training | Validation |
+|--------|----------|------------|
+| Loss   | ~0.0016  | ~0.0030    |
+| MAE    | ~0.024   | ~0.034     |
+
+On a separate test set, the model's average error was **X particles per image** (MAE) with a counting accuracy of **XX%**.
+
+### What this means
+
+Both lines go down, which means the model is learning to detect microplastics. The red line is a bit higher than the blue line, which is normal: the model is slightly better on data it has already seen than on new data. Validation stopped improving after about epoch 20, so training longer would not help much.
+
+### Possible improvements
+
+- Add more training images
+- Use data augmentation (flips, rotations, brightness changes)
+- Try early stopping around epoch 20
 
 # Setup instructions
 
