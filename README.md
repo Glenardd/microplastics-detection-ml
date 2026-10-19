@@ -4,6 +4,34 @@
 
 This project uses **CSRNet**, a deep learning model that takes a microscope image and estimates how many microplastic particles are in it. It does this by producing a "density map" (a heatmap of where particles are), then adding it up to get a count.
 
+## Example detection using the trained model
+### Example microplastic sample
+![microplastic sample](prediction_results_example/example_microplastic_sample.png)
+- This is a photo of a sample placed on white cloth. The small colorful fragments mixed in with the debris are the microplastics the model needs to find and count. They are hard to count by eye because they are tiny, scattered, and overlap with other material.
+
+### Example density map
+![microplastic density map](prediction_results_example/example_density_map.png)
+- The model turns the image into a **density map**, a heatmap showing where it thinks the particles are.
+    - **Bright areas (yellow/green)**: many particles are likely here.
+    - **Dark areas (purple)**: few or no particles.
+- The bright area matches the pile in the photo, which shows the model is looking at the right place. Adding up all the values in the map gives the **estimated particle count**.
+
+### Example prediction results
+![microplastic prediction_result](prediction_results_example/prediction_result.png)
+- The predicted count is then converted into a pollution level. In this example, the sample is treated as 50 liters of water:
+    - Microplastics per liter = particle count ÷ liters
+    - The result is **about 1.09 particles per liter**, which is labeled **Moderate**
+  
+| Particles per liter | Severity |
+|---------------------|----------|
+| 1 or less           | Low |
+| More than 1 up to 5 | Moderate |
+| More than 5 up to 10 | High |
+| More than 10        | Very High |
+
+> These severity levels are thresholds I defined for this project. They are not an official scientific standard.
+
+# Training curve after training the model
 ![Training curves](training-result/training_curve.png)
 
 ### What these charts show
